@@ -21,7 +21,12 @@ import time
 from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 from mcp.server.fastmcp import Context
+<<<<<<< HEAD
 from typing import Optional
+=======
+from typing import Optional, Dict
+from threading import local
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
 
 # Cargar variables de entorno
 load_dotenv()
@@ -42,14 +47,46 @@ API_BASES = {
 if not all([CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, REFRESH_TOKEN]):
     raise Exception("Faltan variables de entorno requeridas en el archivo .env")
 
+<<<<<<< HEAD
 # ------------------ Cliente John Deere API ------------------
 class JohnDeereAPIClient:
     def __init__(self, env="prod"):
+=======
+# Almacenamiento de credenciales por sesión (simple, en memoria)
+_session_store = local()
+
+def set_session_credentials(client_id, client_secret, redirect_uri, refresh_token):
+    _session_store.client_id = client_id
+    _session_store.client_secret = client_secret
+    _session_store.redirect_uri = redirect_uri
+    _session_store.refresh_token = refresh_token
+
+def get_session_credentials():
+    return (
+        getattr(_session_store, 'client_id', None),
+        getattr(_session_store, 'client_secret', None),
+        getattr(_session_store, 'redirect_uri', None),
+        getattr(_session_store, 'refresh_token', None)
+    )
+
+# ------------------ Cliente John Deere API ------------------
+class JohnDeereAPIClient:
+    def __init__(self, env="prod"):
+        # Usar credenciales de sesión si existen, si no, usar las del entorno
+        client_id, client_secret, redirect_uri, refresh_token = get_session_credentials()
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
         self.env = env
         self.api_base = API_BASES.get(env, API_BASES["prod"])
         self.access_token = None
         self.token_expiry = 0
+<<<<<<< HEAD
         self.refresh_token = REFRESH_TOKEN
+=======
+        self.client_id = client_id or CLIENT_ID
+        self.client_secret = client_secret or CLIENT_SECRET
+        self.redirect_uri = redirect_uri or REDIRECT_URI
+        self.refresh_token = refresh_token or REFRESH_TOKEN
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
         self.session = requests.Session()
         self._refresh_access_token()
 
@@ -57,9 +94,15 @@ class JohnDeereAPIClient:
         data = {
             "grant_type": "refresh_token",
             "refresh_token": self.refresh_token,
+<<<<<<< HEAD
             "client_id": CLIENT_ID,
             "client_secret": CLIENT_SECRET,
             "redirect_uri": REDIRECT_URI,
+=======
+            "client_id": self.client_id,
+            "client_secret": self.client_secret,
+            "redirect_uri": self.redirect_uri,
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
         }
         resp = self.session.post(TOKEN_URL, data=data)
         if resp.status_code != 200:
@@ -637,5 +680,14 @@ def get_org_integration_secret_version_event_log_entry(org_id: str, integration_
 
 # --- Fin de endpoints de integración avanzada ---
 
+<<<<<<< HEAD
+=======
+@mcp.tool()
+def set_credentials(client_id: str, client_secret: str, redirect_uri: str, refresh_token: str) -> Dict:
+    """Establece las credenciales de John Deere para la sesión actual. Úsalo antes de cualquier consulta privada."""
+    set_session_credentials(client_id, client_secret, redirect_uri, refresh_token)
+    return {"status": "ok", "message": "Credenciales guardadas para esta sesión."}
+
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
 if __name__ == "__main__":
     mcp.run() 

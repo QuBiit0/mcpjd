@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+# mcpjd
+Servidor MCP para John Deere
+=======
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
 # Servidor MCP para John Deere API
 
 Este servidor MCP (Model Context Protocol) permite la integración de cualquier LLM con las APIs de John Deere, facilitando la interacción en lenguaje natural con los servicios de John Deere.
@@ -36,6 +43,34 @@ El servidor MCP quedará corriendo y listo para recibir consultas desde LLMs com
 - Todos los ejemplos usan variables ficticias, nunca valores reales.
 - Al ejecutar `python main.py` por primera vez, se solicitarán las credenciales de forma segura y se guardarán solo en tu máquina.
 
+<<<<<<< HEAD
+=======
+## Modos de uso del MCP
+
+### 1. Modo local (privado, acceso completo)
+- Ejecuta el servidor completo con credenciales privadas.
+- Acceso real a las APIs de John Deere.
+- Requiere archivo `.env` con tus credenciales (no se sube a GitHub).
+- Ideal para uso personal, desarrollo y producción segura.
+
+### 2. Modo público (solo ejemplos/documentación, ideal para gitmcp.io)
+- Ejecuta el servidor público, que solo expone herramientas de ejemplo y documentación.
+- No requiere credenciales ni acceso a APIs privadas.
+- Ideal para compartir documentación y pruebas públicas en gitmcp.io.
+
+## Cómo elegir el modo
+
+Al ejecutar:
+```bash
+python main.py
+```
+El sistema te preguntará qué servidor deseas lanzar:
+- Opción 1: Servidor completo (privado, local)
+- Opción 2: Servidor público (solo ejemplos/documentación)
+
+Sigue las instrucciones en pantalla según tu necesidad.
+
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
 ## Ejemplo de integración con LLMs (ChatGPT, Claude, Ollama)
 
 Puedes conectar cualquier LLM compatible con MCP usando un cliente MCP. Ejemplo con Python:
@@ -78,4 +113,9 @@ Puedes integrar el MCP con n8n usando el nodo HTTP Request para enviar consultas
 
 ### Notas:
 - Puedes encadenar varios nodos para automatizar consultas y acciones con LLMs y MCP.
+<<<<<<< HEAD
 - Consulta la documentación de n8n para detalles sobre nodos HTTP y manejo de respuestas JSON.
+=======
+- Consulta la documentación de n8n para detalles sobre nodos HTTP y manejo de respuestas JSON.
+>>>>>>> e9b8358 (Primer commit: versión funcional y segura del MCP John Deere)
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)

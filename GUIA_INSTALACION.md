@@ -739,4 +739,106 @@ async def consulta():
 
 ---
 
+<<<<<<< HEAD
 ¿Quieres una guía paso a paso para probar la integración desde Claude Desktop, o necesitas ayuda para depurar si algo no responde? 
+=======
+¿Quieres una guía paso a paso para probar la integración desde Claude Desktop, o necesitas ayuda para depurar si algo no responde? 
+
+---
+
+¡Excelente! La documentación de Augment Code que encontraste explica cómo configurar servidores MCP tanto de forma local como remota, y es compatible con el flujo que necesitas [[fuente](https://docs.augmentcode.com/setup-augment/mcp)].
+
+---
+
+## ¿Cómo configurar tu MCP server para usarlo desde cualquier lugar con Augment Code?
+
+### 1. **Configura tu servidor MCP en la nube (por ejemplo, usando gitmcp.io)**
+
+- Si usas gitmcp.io, tu servidor MCP estará disponible en una URL pública como:
+  ```
+  https://gitmcp.io/QuBiit0/mcpjd
+  ```
+
+---
+
+### 2. **Configura Augment Code para usar tu MCP server**
+
+#### **Opción A: Usar el Panel de Configuración de Augment**
+
+1. Abre Augment Code y haz clic en el ícono de engranaje (⚙️) en la esquina superior derecha del panel de Augment.
+2. Busca la sección “MCP servers”.
+3. Haz clic en el botón “+” para agregar un nuevo servidor.
+4. Completa los campos:
+   - **Name:** Un nombre único, por ejemplo, `mcpjd Docs`
+   - **Command:**  
+     Si es remoto, puedes usar un comando como:
+     ```
+     npx mcp-remote https://gitmcp.io/QuBiit0/mcpjd
+     ```
+     O simplemente la URL si la interfaz lo permite:
+     ```
+     https://gitmcp.io/QuBiit0/mcpjd
+     ```
+
+---
+
+#### **Opción B: Editar el archivo `settings.json` de Augment**
+
+1. Abre el archivo de configuración avanzada de Augment (`settings.json`).
+2. Agrega tu servidor MCP en el array `mcpServers` dentro de `augment.advanced`:
+   ```json
+   "augment.advanced": {
+       "mcpServers": [
+           {
+               "name": "mcpjd Docs",
+               "command": "npx",
+               "args": [
+                   "mcp-remote",
+                   "https://gitmcp.io/QuBiit0/mcpjd"
+               ]
+           }
+       ]
+   }
+   ```
+   O, si la plataforma lo permite, solo la URL:
+   ```json
+   "augment.advanced": {
+       "mcpServers": [
+           {
+               "name": "mcpjd Docs",
+               "url": "https://gitmcp.io/QuBiit0/mcpjd"
+           }
+       ]
+   }
+   ```
+
+3. Guarda los cambios y reinicia Augment Code.
+
+---
+
+### 3. **Sobre las credenciales**
+
+- **Si tu MCP server requiere credenciales para acceder a datos privados (como la API de John Deere):**
+  - Si el servidor está en gitmcp.io, las credenciales deben estar configuradas en el entorno de gitmcp.io (no en tu máquina local).
+  - Si no puedes configurar variables de entorno privadas en gitmcp.io, solo podrás exponer herramientas públicas o de ejemplo.
+  - Para uso real y seguro, cada usuario debería correr el MCP localmente con sus propias credenciales.
+
+---
+
+### 4. **Prueba la integración**
+
+- Una vez configurado, deberías ver tu servidor MCP en la lista de servidores disponibles en Augment Code.
+- Puedes hacer consultas y ver las herramientas expuestas por tu MCP.
+
+---
+
+## Resumen
+
+- Usa la URL pública de tu MCP en gitmcp.io para integrarlo con Augment Code.
+- Configura el servidor en el panel de Augment o en `settings.json` como se muestra arriba.
+- Si necesitas acceso a datos privados, asegúrate de que las credenciales estén configuradas en el entorno donde corre el MCP.
+
+---
+
+¿Quieres que te ayude a crear un ejemplo de flujo de trabajo con Augment Code y tu MCP, o necesitas ayuda para configurar credenciales en un entorno remoto? 
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)

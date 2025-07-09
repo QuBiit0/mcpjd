@@ -106,12 +106,35 @@ def get_refresh_token():
         print("[OK] Refresh token presente.")
 
 
+<<<<<<< HEAD
 def run_mcp_server():
     print("[INFO] Iniciando el servidor MCP (john_deere_mcp_server_full.py)...")
     print("El servidor MCP está corriendo y listo para recibir consultas desde LLMs compatibles (Claude, ChatGPT, etc.).")
     print("Presiona Ctrl+C para detener el servidor.")
     time.sleep(1)
     subprocess.run([sys.executable, "john_deere_mcp_server_full.py"])
+=======
+def elegir_servidor():
+    print("\n¿Qué servidor MCP deseas ejecutar?")
+    print("1. Servidor completo (privado, requiere credenciales, acceso real a APIs)")
+    print("2. Servidor público (solo ejemplos/documentación, ideal para gitmcp.io)")
+    opcion = input("Elige 1 o 2: ").strip()
+    if opcion == "2":
+        return "john_deere_mcp_server_public.py"
+    return "john_deere_mcp_server_full.py"
+
+
+def run_mcp_server():
+    servidor = elegir_servidor()
+    print(f"[INFO] Iniciando el servidor MCP ({servidor})...")
+    if servidor == "john_deere_mcp_server_full.py":
+        print("El servidor MCP completo requiere credenciales y permite acceso real a las APIs privadas de John Deere.")
+    else:
+        print("El servidor MCP público solo expone ejemplos y documentación, ideal para gitmcp.io.")
+    print("Presiona Ctrl+C para detener el servidor.")
+    time.sleep(1)
+    subprocess.run([sys.executable, servidor])
+>>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
 
 
 def main():
