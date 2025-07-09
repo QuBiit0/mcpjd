@@ -32,19 +32,6 @@ def create_venv():
         print("[OK] Entorno virtual detectado.")
 
 
-def activate_venv():
-    if os.name == "nt":
-        activate_script = VENV_DIR / "Scripts" / "activate_this.py"
-    else:
-        activate_script = VENV_DIR / "bin" / "activate_this.py"
-    if activate_script.exists():
-        with open(activate_script) as f:
-            exec(f.read(), {'__file__': str(activate_script)})
-        print("[OK] Entorno virtual activado.")
-    else:
-        print("[ADVERTENCIA] No se pudo activar el entorno virtual automáticamente. Actívalo manualmente si tienes problemas de dependencias.")
-
-
 def install_requirements():
     try:
         import pkg_resources
@@ -105,15 +92,6 @@ def get_refresh_token():
     else:
         print("[OK] Refresh token presente.")
 
-
-<<<<<<< HEAD
-def run_mcp_server():
-    print("[INFO] Iniciando el servidor MCP (john_deere_mcp_server_full.py)...")
-    print("El servidor MCP está corriendo y listo para recibir consultas desde LLMs compatibles (Claude, ChatGPT, etc.).")
-    print("Presiona Ctrl+C para detener el servidor.")
-    time.sleep(1)
-    subprocess.run([sys.executable, "john_deere_mcp_server_full.py"])
-=======
 def elegir_servidor():
     print("\n¿Qué servidor MCP deseas ejecutar?")
     print("1. Servidor completo (privado, requiere credenciales, acceso real a APIs)")
@@ -134,7 +112,6 @@ def run_mcp_server():
     print("Presiona Ctrl+C para detener el servidor.")
     time.sleep(1)
     subprocess.run([sys.executable, servidor])
->>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
 
 
 def main():
@@ -143,7 +120,6 @@ def main():
     print("==============================")
     check_python_version()
     create_venv()
-    #activate_venv()  # No es necesario en la mayoría de los casos si se ejecuta desde el entorno
     install_requirements()
     check_env_vars()
     get_refresh_token()

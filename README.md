@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-# mcpjd
-Servidor MCP para John Deere
-=======
->>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
 # Servidor MCP para John Deere API
 
 Este servidor MCP (Model Context Protocol) permite la integración de cualquier LLM con las APIs de John Deere, facilitando la interacción en lenguaje natural con los servicios de John Deere.
@@ -32,10 +25,6 @@ Esto realizará automáticamente:
 
 El servidor MCP quedará corriendo y listo para recibir consultas desde LLMs compatibles (Claude, ChatGPT, etc.).
 
-## Endpoints Destacados de Precision Tech
-
-- `
-
 ## Seguridad y buenas prácticas
 
 - **Nunca subas el archivo `.env` ni credenciales reales al repositorio.**
@@ -43,8 +32,6 @@ El servidor MCP quedará corriendo y listo para recibir consultas desde LLMs com
 - Todos los ejemplos usan variables ficticias, nunca valores reales.
 - Al ejecutar `python main.py` por primera vez, se solicitarán las credenciales de forma segura y se guardarán solo en tu máquina.
 
-<<<<<<< HEAD
-=======
 ## Modos de uso del MCP
 
 ### 1. Modo local (privado, acceso completo)
@@ -70,7 +57,6 @@ El sistema te preguntará qué servidor deseas lanzar:
 
 Sigue las instrucciones en pantalla según tu necesidad.
 
->>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
 ## Ejemplo de integración con LLMs (ChatGPT, Claude, Ollama)
 
 Puedes conectar cualquier LLM compatible con MCP usando un cliente MCP. Ejemplo con Python:
@@ -113,9 +99,4 @@ Puedes integrar el MCP con n8n usando el nodo HTTP Request para enviar consultas
 
 ### Notas:
 - Puedes encadenar varios nodos para automatizar consultas y acciones con LLMs y MCP.
-<<<<<<< HEAD
 - Consulta la documentación de n8n para detalles sobre nodos HTTP y manejo de respuestas JSON.
-=======
-- Consulta la documentación de n8n para detalles sobre nodos HTTP y manejo de respuestas JSON.
->>>>>>> e9b8358 (Primer commit: versión funcional y segura del MCP John Deere)
->>>>>>> 3e52e55 (Versión final: soporte local y público, documentación y seguridad mejoradas)
