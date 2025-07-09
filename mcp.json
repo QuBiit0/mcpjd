@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "john-deere-mcp": {
+      "command": "python",
+      "args": [
+        "C:/Users/QuBit/Desktop/projects/john_deere_mcp_server_full.py"
+      ],
+      "cwd": "C:/Users/QuBit/Desktop/projects",
+      "port": 8000,
+      "readyPattern": "servidor MCP está corriendo",
+      "timeout": 30000
+    }
+  }
+}
